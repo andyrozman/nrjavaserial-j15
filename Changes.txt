@@ -1,0 +1,14 @@
+Changes
+========
+
+
+3.9.3.1
+   - Import of RFC 2217 code
+   - renamed artifact from nrjavaserial:3.9.3-GGC to nrjavaserial-j15:3.9.3.1
+   - created own repository https://github.com/andyrozman/nrjavaserial-j15
+
+3.9.3
+   - Initial import
+   - nrjavaserial:3.9.3-GGC
+
+
