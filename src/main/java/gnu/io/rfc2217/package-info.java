@@ -8,9 +8,9 @@
 /**
  * Top level Java package for the <a href="http://jvser.googlecode.com/"><b>jvser</b></a> RFC 2217 client library.
  *
- * <p>
+ *  
  * The central class in this package is {@link gnu.io.rfc2217.TelnetSerialPort}.
- * </p>
+ *  
  *
  * @see gnu.io.rfc2217.TelnetSerialPort
  * @see <a href="http://tools.ietf.org/html/rfc2217">RFC 2217</a>

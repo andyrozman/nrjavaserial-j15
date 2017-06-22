@@ -376,7 +376,7 @@ public class RXTXCommDriver implements CommDriver
     * 2) Load any required native libraries.
     * 3) Register the port names with the CommPortIdentifier.
 	*
-	* <p>From the NullDriver.java CommAPI sample.
+	*  From the NullDriver.java CommAPI sample.
 	*
 	* added printerport stuff
 	* Holger Lehmann
@@ -897,7 +897,7 @@ public class RXTXCommDriver implements CommDriver
 
 
 	/*
-	 * <p>From the NullDriver.java CommAPI sample.
+	 *  From the NullDriver.java CommAPI sample.
 	 */
 	/**
 	*  @param PortName The name of the port the OS recognizes

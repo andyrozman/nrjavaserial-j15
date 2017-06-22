@@ -1,6 +1,9 @@
 Changes
 ========
 
+3.11.0
+   - created branch and release for 3.11.0 (used by GGC 0.7 and higher)
+
 
 3.9.3.1
    - Import of RFC 2217 code
