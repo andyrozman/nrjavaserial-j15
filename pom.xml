@@ -14,7 +14,7 @@
     <packaging>jar</packaging>
 
     <name>Neuron Robotics Java Serial (Java 1.5)</name>
-    <version>3.10.0</version>
+    <version>3.13.0</version>
     <description>
         Fork of the RXTX library with a focus on ease of use and the ability to
         embed in other libraries.
@@ -38,6 +38,7 @@
 
     <properties>
         <developer.email>kharrington@neuronrobotics.com</developer.email>
+	    <jna-j15.version>4.1.0</jna-j15.version>
     </properties>
 
     <developers>
@@ -55,6 +56,9 @@
                     <exclude>**/.svn/</exclude>
                 </excludes>
             </resource>
+            <resource>
+                <directory>src/main/resources/</directory>
+             </resource>
         </resources>
 
         <plugins>
@@ -96,6 +100,9 @@
                             native/linux/x86_64/libNRJavaSerial_legacy.so;osname=linux;processor=x86_64,
                             native/osx/libNRJavaSerial.jnilib;osname="mac os x";processor=x86;processor=x86_64
                         </Bundle-NativeCode>
+                        <Include-Resource>
+                            jvser.properties=main/resources/jvser.properties
+                        </Include-Resource>
                     </instructions>
                 </configuration>
                 <executions>
@@ -129,6 +136,20 @@
             <artifactId>commons-net</artifactId>
             <version>3.3</version>
         </dependency>
+
+	<dependency>
+                <groupId>net.java.dev.jna</groupId>
+                <artifactId>jna</artifactId>
+                <version>4.2.2</version>
+        </dependency>
+
+	<dependency>
+                <groupId>net.java.dev.jna</groupId>
+                <artifactId>jna-platform</artifactId>
+                <version>4.2.2</version>
+        </dependency>
+
+
 
     </dependencies>
 

@@ -40,7 +40,7 @@ public class NativeResource {
 		loadResource(resourceLocation);
 		testNativeCode();
 	}
-	private String[] armLibs = {"libNRJavaSerialv5","libNRJavaSerialv6_HF","libNRJavaSerialv6","libNRJavaSerial_HF","libNRJavaSerial"};
+	private String[] armLibs = {"libNRJavaSerialv8_HF","libNRJavaSerialv8","libNRJavaSerialv7_HF","libNRJavaSerialv7","libNRJavaSerialv6_HF","libNRJavaSerialv6","libNRJavaSerialv5"};
 	private void loadLib(String name) throws NativeResourceException {
 
 		String libName = name.substring(name.indexOf("lib")+3);
@@ -121,6 +121,12 @@ public class NativeResource {
 					file="/native/linux/x86_32/" + name;
 				}
 			}
+		}else if(OSUtil.isFreeBSD()) {
+			if(OSUtil.is64Bit()) {
+				file="/native/freebsd/x86_64/" + name;
+			}else {
+				file="/native/freebsd/x86_32/" + name;
+			}
 		}else{
 			//System.err.println("Can't load native file: "+name+" for os arch: "+OSUtil.getOsArch());
 			return null;
@@ -133,7 +139,12 @@ public class NativeResource {
 		if(!resource.canRead())
 			throw new RuntimeException("Cant open JNI file: "+resource.getAbsolutePath());
 		//System.out.println("Loading: "+resource.getAbsolutePath());
-		System.load(resource.getAbsolutePath());
+		try {
+			System.load(resource.getAbsolutePath());
+		} catch(UnsatisfiedLinkError e){
+			System.out.println(e.getMessage());
+			throw e;
+		}
 	}
 
 	private void copyResource(InputStream io, File file) throws IOException {
@@ -243,7 +254,11 @@ public class NativeResource {
 		public static boolean isLinux() {
 			return getOsName().toLowerCase().startsWith("linux");
 		}
-		
+
+		public static boolean isFreeBSD() {
+			return getOsName().toLowerCase().startsWith("freebsd");
+		}
+
 		public static boolean isOSX() {
 			return getOsName().toLowerCase().startsWith("mac");
 		}
@@ -253,7 +268,7 @@ public class NativeResource {
 				return ".dll";
 			}
 			
-			if(isLinux()) {
+			if(isLinux() || isFreeBSD()) {
 				return ".so";
 			}
 			
